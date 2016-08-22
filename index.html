@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html ng-app = 'app'>
+<head>
+	<title>Products & Orders</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<script src = 'bower_components/angular/angular.js'></script>
+	<script src="script.js"></script>
+
+
+</head>
+<body>
+	<div class="productsController col-sm-8 col-sm-offset-2" ng-controller='productsController'>
+		<h3>Products Controller</h3>
+		<div class="col-sm-10 col-sm-offset-1 form">
+			<form ng-submit='create()'>
+				<div class="form-group">
+				    <label for="name">Product Name</label>
+				    <input type="text" class="form-control" id="name" ng-model='product.name'>
+				</div>
+				<div class="form-group">
+				    <label for="price">Product Price</label>
+				    <input type="text" class="form-control" id="price" ng-model='product.price'>
+				</div>
+				<input type="submit" class="btn btn-primary" value="Create User"></input>
+			</form>
+		</div>
+
+
+		<div class="col-sm-10 col-sm-offset-1">
+			<table class="table table-striped">
+			  <thead>
+			    <tr>
+			      <th>Name</th>
+			      <th>Price</th>
+			      <th>Action</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	<tr ng-repeat='product in products'>
+			  		<td>{{ product.name }}</td>
+			  		<td>{{ product.price }}</td>
+			  		<td><button ng-click = "delete($index)" class="btn btn-danger">Delete</button></td>
+			  		
+			  	</tr>
+			    
+			  </tbody>
+			</table>
+		</div>
+	</div>
+
+
+	<div class="ordersController col-sm-8 col-sm-offset-2" ng-controller='ordersController'>
+		<h3>Orders Controller</h3>
+		<div class="col-sm-10 col-sm-offset-1">
+			<table class="table table-striped">
+			  <thead>
+			    <tr>
+			      <th>Name</th>
+			      <th>Price</th>
+			      <th>Qty Available</th>
+			      <th>Action</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	<tr ng-repeat='product in products'>
+			  		<td>{{ product.name }}</td>
+			  		<td>{{ product.price }}</td>
+			  		<td>{{ product.quantity }}</td>
+			  		<td><button ng-click = "delete($index)" class="btn btn-danger">Buy</button></td>
+			  		
+			  	</tr>
+			    
+			  </tbody>
+			</table>
+		</div>
+
+
+	</div>
+
+
+
+</body>
+</html>
